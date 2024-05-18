@@ -1,0 +1,50 @@
+{#此页面用于展示搜索结果#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SearchResult</title>
+    <style>
+        body{
+            color: white;
+        }
+        a{
+            text-decoration: none;
+            color: antiquewhite;
+        }
+        a:hover{
+            color: lightcoral;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://images.pexels.com/photos/169789/pexels-photo-169789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+{#        {% block high_search%}#}
+{#        {% endblock %}#}
+        {% if error%}
+            {% for doc in docs%}
+            <div id="doc">
+                <ul id="navigation">
+                    <p><big><a href="/search/{{doc.id}}/" target="_blank">{{doc.title}}</a></big>
+
+                    </p>
+                    <p>{{doc.time}}<br/>{{doc.snippet}}<br/>
+                    <a href="{{ doc.url }}" target="_blank">{{doc.url}}</a>
+
+                    </p>
+                </ul>
+            </div>
+            <br/>
+            {% endfor %}
+        {% block next %}
+        <ul>
+            {% for i in page %}
+                <a href="/search/page/{{i}}/">{{i}}</a>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+        {% else %}
+            <p>对不起，没有您搜索的网页！</p>
+        {% endif %}
+    </div>
+</body>
+</html>

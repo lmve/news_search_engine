@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{doc.title}}</title>
+</head>
+    <style type="text/css">
+        body {
+            background-image: url("https://images.pexels.com/photos/169789/pexels-photo-169789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+        a{
+            text-decoration: none;
+            color: antiquewhite;
+        }
+        a:hover{
+            color: lightcoral;
+        }
+    </style>
+    <div id="basic" align="center">
+        <h1>{{doc.title}}</h1>
+        <p>{{doc.datetime}}</p>
+        <p><a href="{{doc.url}}" target="_blank">{{doc.url}}</a></p>
+    </div>
+    <hr/>
+    <div id="detail" align="center">
+        <table width="1000" border="0">
+            <tr>
+                <td style="width:1000px"><p>{{doc.body}}</p></td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+    <div align="center">
+        <table width="1000" border="0">
+            <tr>
+                <td style="width:1000px"><h2>精选文章</h2></td>
+            </tr>
+            {% for each in doc.extra %}
+            <tr>
+                <td style="width:1000px"><a href="/search/{{each.id}}/" target="_blank">{{each.title}}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

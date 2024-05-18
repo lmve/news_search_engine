@@ -1,0 +1,233 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <title>Search Engine</title>#}
+{##}
+{#    <style type="text/css">#}
+{#        body {#}
+{#            color: black; /* 将所有文字改为白色 */#}
+{#        }#}
+{#        #search-container {#}
+{#            text-align: center;#}
+{#            margin-top: 20px; /* 可根据需要调整 */#}
+{#        }#}
+{#        #search-container form {#}
+{#            display: inline-block;#}
+{#            margin: 0 auto; /* 使表单在容器内居中 */#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body style="background-image: url('https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">#}
+{#    <div id="container">#}
+{#        <div id="header">#}
+{#          <h1>Search Engine</h1>#}
+{#            <div id="search-container"> <!-- 将搜索框放入新的div容器中 -->#}
+{#                <form name="search" action="/search/" method="POST">#}
+{#                <h1>Search Engine</h1>#}
+{#                    <p>#}
+{#                        {% if key %}#}
+{#                            <input type="text" name="key_word" value="{{key}}">#}
+{#                        {% else %}#}
+{#                            <input type="text" name="key_word">#}
+{#                        {% endif %}#}
+{#                        <input type="submit" value="Search">#}
+{#                    </p>#}
+{#                </form>#}
+{#            </div> <!-- 结束div容器 -->#}
+{#        </div>#}
+{#        <hr/>#}
+{#        {% block high_search%}#}
+{#        {% endblock %}#}
+{#        {% if error%}#}
+{#            {% for doc in docs%}#}
+{#            <div id="doc">#}
+{#                <ul id="navigation">#}
+{#                    <p><big><a href="/search/{{doc.id}}/" target="_blank">{{doc.title}}</a></big>#}
+{##}
+{#                    </p>#}
+{#                    <p>{{doc.time}}<br/>{{doc.snippet}}<br/>#}
+{#                    <a href="{{ doc.url }}" target="_blank">{{doc.url}}</a>#}
+{##}
+{#                    </p>#}
+{#                </ul>#}
+{#            </div>#}
+{#            <br/>#}
+{#            {% endfor %}#}
+{#        {% block next %}#}
+{#        <ul>#}
+{#            {% for i in page %}#}
+{#                <a href="/search/page/{{i}}/">{{i}}</a> #}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#        {% endblock %}#}
+{#        {% else %}#}
+{#            <p>对不起，没有您搜索的网页！</p>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</body>#}
+{#</html>#}
+
+
+{#此界面为搜索界面#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <title>Search Engine</title>#}
+{#    <style type="text/css">#}
+{#         body {#}
+{#            color: white; /* 将所有文字改为白色 */#}
+{#            display: flex;#}
+{#            justify-content: center;#}
+{#            align-items: center;#}
+{#            height: 100vh;#}
+{#            flex-direction: column;#}
+{#            margin: 0;#}
+{#            padding: 0;#}
+{#            box-sizing: border-box;#}
+{#            font-family: Arial, sans-serif;#}
+{#        }#}
+{#        #search-container {#}
+{#            text-align: center;#}
+{#            width: 100%;#}
+{#        }#}
+{#        #search-container form {#}
+{#            display: inline-block;#}
+{#            width: 50%;#}
+{#            height: 50%;#}
+{#        }#}
+{#        #search-container input[type="text"] {#}
+{#            width: 50%;#}
+{#            height: 50%;#}
+{#        }#}
+{#        #search-container {#}
+{#            text-align: center;#}
+{#            margin-top: 20px; /* 可根据需要调整 */#}
+{#        }#}
+{#        #header{#}
+{#            width: 1000px;#}
+{#            height: 500px;#}
+{#            margin-top: 30%;#}
+{#        }#}
+{#        #search-container form {#}
+{#            display: inline-block;#}
+{#            margin: 0 auto; /* 使表单在容器内居中 */#}
+{#        }#}
+{#        h1{#}
+{#            text-align: center;#}
+{#            font-size: 50px;#}
+{#        }#}
+{#        p{#}
+{#            width: 600px;#}
+{#            height: 50px;#}
+{#        }#}
+{#        input{#}
+{#            width: 20px;#}
+{#            height: 20px;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body style="background-image: url('https://images.pexels.com/photos/169789/pexels-photo-169789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">#}
+{#    <div id="container">#}
+{#        <div id="header">#}
+{#          <h1>Search Engine</h1>#}
+{#            <div id="search-container"> <!-- 将搜索框放入新的div容器中 -->#}
+{#                <form name="search" action="/search/" method="POST">#}
+{##}
+{#                    <p>#}
+{#                            <input type="text" name="key_word" value="" width="500px" height="80">#}
+{#                            <input type="submit" value="Search" width="120px" height="80px">#}
+{#                            <input type="image" src="https://img-s.msn.cn/tenant/amp/entityid/AAZLoGU?w=20&h=0&q=90&m=6&f=png&u=t" alt="提交">#}
+{#                    </p>#}
+{#                </form>#}
+{#            </div> <!-- 结束div容器 -->#}
+{#        </div>#}
+{#    </div>#}
+{#</body>#}
+{#</html>#}
+{#此界面为搜索界面#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search Engine</title>
+
+    <style type="text/css">
+         body {
+            color: white; /* 将所有文字改为白色 */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        #search-container {
+            text-align: center;
+            width: 100%;
+        }
+        #search-container form {
+            display: inline-block;
+            width: 50%;
+            height: 50%;
+        }
+        #search-container input[type="text"] {
+            width: 520px;
+            {#float: center;#}
+            height: 35px;
+            line-height: 28px \9;
+            padding: 0 8px;
+            border-radius: 18px;
+        }
+        #search-container {
+            text-align: center;
+            margin-top: 20px; /* 可根据需要调整 */
+        }
+        #header{
+            width: 1000px;
+            height: 500px;
+            margin-top: 30%;
+        }
+        #search-container form {
+            display: inline-block;
+            margin: 0 auto; /* 使表单在容器内居中 */
+        }
+        h1{
+            text-align: center;
+            font-size: 50px;
+        }
+        p{
+            width: 600px;
+            height: 50px;
+            position: relative;
+        }
+        .input1{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 40px;
+            top: 8px;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://images.pexels.com/photos/169789/pexels-photo-169789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+    <div id="container">
+        <div id="header">
+          <h1>Search Engine</h1>
+            <div id="search-container"> <!-- 将搜索框放入新的div容器中 -->
+                <form name="search" action="/search/" method="POST">
+
+                    <p>
+                            <input type="text" name="key_word" value="" width="500px" height="80">
+                            <input type="image" class="input1" value="Search" src="https://img-s.msn.cn/tenant/amp/entityid/AAZLoGU?w=20&h=0&q=90&m=6&f=png&u=t" alt="提交">
+                    </p>
+                    <p>Copyright 2023 luckyma, All Rights Reserved</p>
+                </form>
+            </div> <!-- 结束div容器 -->
+        </div>
+    </div>
+</body>
+</html>
+
